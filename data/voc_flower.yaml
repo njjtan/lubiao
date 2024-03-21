@@ -1,0 +1,21 @@
+# PASCAL VOC dataset http://host.robots.ox.ac.uk/pascal/VOC/
+# Train command: python train.py --data voc.yaml
+# Default dataset location is next to /yolov5:
+#   /parent_folder
+#     /VOC
+#     /yolov5
+
+
+# download command/URL (optional)
+download: bash data/scripts/get_voc.sh
+
+# train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]
+train: F:\\lubiao\\VOCdevkit\\images\\train
+val: F:\\lubiao\\VOCdevkit\\images\\val
+
+# number of classes
+nc: 8
+
+# class names
+names: ['Rib1-1','Rib2-2','Reverse-needle','Pointelle','Floating-line','Tuck','Twisted-flower','Positive-needle']
+

@@ -1,0 +1,43 @@
+# pip install -r requirements.txt
+
+# base ----------------------------------------
+Cython
+matplotlib>=3.2.2
+numpy>=1.18.5
+opencv-python>=4.1.2
+pillow
+PyYAML>=5.3
+scipy>=1.4.1
+tensorboard>=2.2
+torch>=1.6.0
+torchvision>=0.7.0
+tqdm>=4.41.0
+
+# coco ----------------------------------------
+# pycocotools>=2.0
+
+# export --------------------------------------
+# packaging  # for coremltools
+# coremltools==4.0
+# onnx>=1.7.0
+# scikit-learn==0.19.2  # for coreml quantization
+
+# extras --------------------------------------
+# thop  # FLOPS computation
+# seaborn  # plotting
+
+#SimAM注意力模块（花纹）
+python train.py --data data/voc_flower.yaml --cfg models/yolov5simam.yaml --weights weights/yolov5s.pt --batch-size 4 --epochs 50
+
+
+
+
+
+python train.py --data data/voc_lubiao_taigu.yaml --cfg models/yolov5simam.yaml --weights weights/yolov5s.pt --batch-size 4 --epochs 200
+python train.py --data data/voc_lubiao_taigu.yaml --cfg models/yolov5s_ema.yaml --weights weights/yolov5s.pt --batch-size 4 --epochs 200
+
+#如果同时引用可变卷积和深度可分离卷积，需要修改
+#yolo.py的from models.common_dconc_dp import DP_Conv, Bottleneck, SPP, DWConv, Focus, BottleneckCSP, Concat, NMS, autoShape, SE, SimAM, DCnv2里面的DP_Conv
+#和models/experimental.py下的DP_Conv
+#如果只选用可变卷积，只需选用对用的配置文件即可，同时修改上述俩文件的from common_dconc
+
